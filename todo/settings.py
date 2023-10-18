@@ -148,10 +148,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID=1
 
-# 815891478875-cf3souk3nv9m4odnng27p4nu5uftd3g8.apps.googleusercontent.com
-
-# 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
-
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
