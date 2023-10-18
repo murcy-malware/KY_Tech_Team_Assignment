@@ -1,0 +1,53 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskHive</title>
+    <link rel="shortcut icon" href="{% static "taskdb/check-list.png" %}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&family=Rubik&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "taskdb/style.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="container">
+        <div class="content">
+            <form action="" class="signin-form" method="post">
+                {% csrf_token %}
+                <h2>Sign In</h2>
+    
+                <div class="input-bx">
+                    <input name="username" type="text" id="signinUsername" placeholder="Username">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="input-bx">
+                    <input name="pswd" type="password" id="signinPassword" placeholder="Password">
+                    <i class="fa-solid fa-key"></i>
+                    <p>forgot password?</p>
+                </div>
+    
+                <button class="btn-signin" type="submit">Sign In <i class="fa-solid fa-right-to-bracket"></i></button>
+    
+                <div class="option-text"><hr><p>or sign in with</p></div>
+            </form>
+            <div class="button-group">
+                <a href="{% provider_login_url 'google' %}?next=/"><button class="btn-google">Google <i class="fa-brands fa-google"></i></button></a>
+                <button class="btn-facebook">Facebook <i class="fa-brands fa-facebook"></i></i></button>
+            </div>
+            <p class="message"><a href="/signup/"><b>Not a Member? click here</b></a></p>
+        </div>
+    
+</body>
+</html>
