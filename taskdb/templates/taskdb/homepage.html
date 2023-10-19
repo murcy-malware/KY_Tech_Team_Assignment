@@ -30,7 +30,7 @@
         <ul class="messages">
             {% for message in messages %}
             <li class="message {% if message.tags == 'success' %}success-message{% endif %}{% if message.tags == 'info' %}info-message{% endif %}{% if message.tags == 'warning' %}warning-message{% endif %}{% if message.tags == 'error' %}error-message{% endif %}">
-                <b>{{ message }} {{user.username}}</b>
+                <b>{{ message }}</b>
             </li>
             {% endfor %}
         </ul>
