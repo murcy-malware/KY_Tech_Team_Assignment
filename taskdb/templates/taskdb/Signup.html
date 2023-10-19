@@ -6,11 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskHive</title>
-    <link rel="shortcut icon" href="{% static "taskdb/check-list.png" %}" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="{% static 'taskdb/check-list.png' %}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&family=Rubik&family=Tilt+Neon&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "taskdb/style.css" %}">
+    <link rel="stylesheet" href="{% static 'taskdb/signup.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -18,7 +16,9 @@
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        <li class="message {% if message.tags == 'success' %}success-message{% endif %}{% if message.tags == 'info' %}info-message{% endif %}{% if message.tags == 'warning' %}warning-message{% endif %}{% if message.tags == 'error' %}error-message{% endif %}">
+            {{ message }}
+        </li>
         {% endfor %}
     </ul>
     {% endif %}
@@ -48,7 +48,7 @@
             </form>
             <div class="button-group">
                 <a href="{% provider_login_url 'google' %}?next=/"><button class="btn-google">Google <i class="fa-brands fa-google"></i></button></a>
-                <button class="btn-facebook">Facebook <i class="fa-brands fa-facebook"></i></i></button>
+                <a href="{% provider_login_url 'github' %}"><button class="github-button">GitHub <i class="fab fa-github"></i></button></a>
             </div>
             <p class="message"><a href="/"><b>Already a Member? click here</b></a></p>
         </div>

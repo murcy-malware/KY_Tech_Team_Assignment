@@ -3,21 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <title>TaskHive</title>
+    <link rel="shortcut icon" href="{% static 'taskdb/check-list.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            background: #ffe259;
+            background: -webkit-linear-gradient(to right, #ffa751, #ffe259);
+            background: linear-gradient(to right, #ffa751, #ffe259); 
+        }
+    </style>
 </head>
 <body>
-  
-    <h1>Welcome to my app</h1>
-
-
-    {% if user.is_authenticated %}
-      <h3>Hello  {{user.username}}</h3> <br>
-      <h3>Email: {{user.email}}</h3>
-      <h3>Name: {{user.first_name}}</h3>
-      <h3>You are successfully logged in  !!</h3>
-      <button class="btn-logout" type="submit"><a href="/logout/">Logout</a></button>
-    {% endif %}
+    <div class="container d-flex flex-column justify-content-center align-items-center border  text-dark border-secondary rounded mt-md-5 p-md-5">
+        <h1>Welcome to my app</h1><br>
+        {% if user.is_authenticated %}
+        <h3>Hello  {{user.username}}</h3> <br>
+        {% if user.email %}
+        <h3>Email: {{user.email}}</h3><br>
+        {% endif %}
+        {% if user.first_name %}
+        <h3>Name: {{user.first_name}}</h3><br>
+        {% endif %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="message {% if message.tags == 'success' %}success-message{% endif %}{% if message.tags == 'info' %}info-message{% endif %}{% if message.tags == 'warning' %}warning-message{% endif %}{% if message.tags == 'error' %}error-message{% endif %}">
+                <b>{{ message }} {{user.username}}</b>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <button class="btn btn-logout btn-lg" type="buttom"><a href="/logout/">Logout</a></button>
+      {% endif %}
+    </div>
+   
 
 
 

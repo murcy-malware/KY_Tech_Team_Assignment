@@ -145,8 +145,8 @@ form h2{
     text-align: center;
 }
 .message a{
-    color: gray;
-    font-size: 12px;
+    color: grey;
+    font-size: 14px;
     text-align: center;
     transition: .5s;
 }
@@ -154,3 +154,10 @@ form h2{
 .message a:hover{
     color: blue;
 }
+.github-button {
+    background-color: #333; 
+    color: #fff;
+    border: none;
+    padding: 10px 20px; 
+    width: 155px;
+  }

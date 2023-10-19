@@ -37,6 +37,7 @@ def signin(request):
         user=authenticate(username=username,password=pswd)
         if user is not None:
             login(request,user)
+            messages.success(request,"Successfully signed in as")
             return redirect('homepage')
         else:
             messages.error(request,"Username or password is incorrect")

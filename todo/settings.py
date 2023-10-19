@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#4k@qv9^d!ty!=6$dk&&aola+3dv^on2*%(uykg*==++8&!_&v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.facebook',
-    # 'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.github',
     # 'allauth.socialaccount.providers.linkedin',
 ]
 
@@ -137,20 +137,12 @@ STATICFILES_DIR=[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
-   
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
-   
+
 ]
 
 SITE_ID=1
-
-# 815891478875-cf3souk3nv9m4odnng27p4nu5uftd3g8.apps.googleusercontent.com
-
-# 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
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -164,5 +156,19 @@ SOCIALACCOUNT_PROVIDERS = {
         'OAUTH_PKCE_ENABLED': True,
     }
 }
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ],
+    }
+}
 
+SOCIAL_AUTH_GITHUB_KEY = '9405d99bb65f3290ad9a'
+SOCIAL_AUTH_GITHUB_SECRET = '96e6682e0caf269fd00edc7d25da93c0739c08b5'
+ 
 LOGIN_REDIRECT_URL = 'homepage'
+
+
